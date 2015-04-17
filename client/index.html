@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myAppModule">
+<head>
+	<meta charset="UTF-8">
+	<title>Desease Tracker</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	<!--In AngularJS 1.2.0 and later, ngRoute has been moved to its own module. If you are getting this error after upgrading to 1.2.x or later, be sure that you've installed ngRoute.-->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+	</script>
+	<script type="text/javascript" src="app.js"></script>
+	<script type='text/javascript' src='./controllers/controller.js'></script> 
+	<!-- Latest compiled and minified CSS -->
+
+	<style type="text/css">
+		.desease_list li{
+			margin: 10px;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body class="container">
+	<h1 class="page-header">Search</h1>
+	<div ng-controller="DeseaseController">
+		<div class="row">
+			<div class="col-md-5">
+				<form>
+					<input type="text" placeholder="Search desease" ng-model="desease">
+				  <input type="submit" value="Search cases" 
+				         ng-click="search_desease()" class="btn btn-success">
+				</form>
+			</div>
+		</div> 
+		<div class="row">
+			<div class="col-md-8">
+		 	  <ul class="desease_list list-group">
+		 	  	<li ng-repeat="data in desease_datas" class="list-group-item">
+
+		 	  		<h3>Tweet Details</h3>
+		 	  		<h5>Date       : {{data.created_at}}</h5>
+		 	  		<h4>Tweet Location   : {{data.user.location}}</h4>
+		 	  		<h5>News       : {{data.text}}</h5>
+		 	  		<h6>Source     : {{data.source}}</h6>
+
+		 	  		<h3>User Details</h3>
+		 	  		<h4>Screen Name : {{data.user.screen_name}}</h4>
+		 	  		<h4>Geo Location Enabled : {{data.user.geo_enabled}}</h4>
+		 	  		<h6>User description : {{data.user.description}}</h6>
+		 	  	</li>
+		 	  </ul>
+			</div>
+		</div> 
+		<div>
+		 
+			<h1>All</h1>
+				{{data}}
+		</div>
+	</div>
+</body>
+</html>
